@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpportunityHub | Discover Internships, Hackathons & Scholarships</title>
+    <meta name="description" content="One-stop platform for college students to discover internships, hackathons, scholarships, courses, competitions, and workshops.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar-header">
+        <div class="nav-container">
+            <a href="#" class="logo" id="logoLink" data-view="home">
+                <div class="logo-icon-wrap">
+                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <span class="logo-text">Opportunity<span class="logo-highlight">Hub</span></span>
+            </a>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+
+            <!-- Navigation Links -->
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active" data-view="home">Home</a>
+                <a href="#explore" class="nav-link" data-view="explore">Explore Opportunities</a>
+                <a href="#recommended" class="nav-link" data-view="recommended">
+                    Recommended <span class="badge-dot-yellow" id="recDot" style="display:none;"></span>
+                </a>
+                <a href="#saved" class="nav-link" data-view="saved">
+                    Saved <span class="nav-count-badge" id="savedCountBadge">0</span>
+                </a>
+                <a href="#dashboard" class="nav-link" data-view="dashboard">Dashboard</a>
+                <a href="#profile" class="nav-link nav-profile-btn" data-view="profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <span id="navProfileName">Profile</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="main-content">
+
+        <!-- 1. LANDING / HOME VIEW -->
+        <section id="view-home" class="view-section active">
+            <!-- Hero Section -->
+            <div class="hero-container">
+                <div class="hero-badge">
+                    <span class="sparkle">✨</span> #1 Student Opportunity Portal
+                </div>
+                <h1 class="hero-title">Discover Opportunities.<br><span class="text-gradient">Build Your Future.</span></h1>
+                <p class="hero-subtitle">Find internships, hackathons, scholarships, courses, competitions, and workshops — all in one clean dashboard.</p>
+                
+                <!-- Hero Search Bar -->
+                <div class="hero-search-box">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="heroSearchInput" placeholder="Search internships, hackathons, skills (e.g., Python, Google)...">
+                    <button class="btn btn-primary" id="heroSearchBtn">🔎 Search Opportunities</button>
+                </div>
+
+                <!-- Hero Quick Stats -->
+                <div class="hero-stats-row">
+                    <div class="hero-stat-pill">
+                        <span class="stat-num" id="heroTotalCount">23+</span> Active Opportunities
+                    </div>
+                    <div class="hero-stat-pill">
+                        <span class="stat-num">100%</span> Free for Students
+                    </div>
+                    <div class="hero-stat-pill">
+                        <span class="stat-num">Instant</span> Rule-Based Match
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Section -->
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Explore Categories</h2>
+                    <p>Browse student opportunities tailored to your career goal</p>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card" data-category="Internship">
+                        <div class="cat-icon cat-green">💼</div>
+                        <h3>Internships</h3>
+                        <p>Gain real-world industry experience</p>
+                        <span class="cat-count" id="count-Internship">5 Openings</span>
+                    </div>
+                    <div class="category-card" data-category="Hackathon">
+                        <div class="cat-icon cat-yellow">🏆</div>
+                        <h3>Hackathons</h3>
+                        <p>Build products & compete globally</p>
+                        <span class="cat-count" id="count-Hackathon">5 Openings</span>
+                    </div>
+                    <div class="category-card" data-category="Competition">
+                        <div class="cat-icon cat-green">🎯</div>
+                        <h3>Competitions</h3>
+                        <p>Showcase skills & win prize pools</p>
+                        <span class="cat-count" id="count-Competition">3 Openings</span>
+                    </div>
+                    <div class="category-card" data-category="Scholarship">
+                        <div class="cat-icon cat-yellow">🎓</div>
+                        <h3>Scholarships</h3>
+                        <p>Get educational grants & funding</p>
+                        <span class="cat-count" id="count-Scholarship">3 Openings</span>
+                    </div>
+                    <div class="category-card" data-category="Course">
+                        <div class="cat-icon cat-green">📚</div>
+                        <h3>Courses</h3>
+                        <p>Learn in-demand tech skills</p>
+                        <span class="cat-count" id="count-Course">3 Openings</span>
+                    </div>
+                    <div class="category-card" data-category="Certification">
+                        <div class="cat-icon cat-yellow">🏅</div>
+                        <h3>Certifications</h3>
+                        <p>Validate your knowledge & resume</p>
+                        <span class="cat-count" id="count-Certification">2 Openings</span>
+                    </div>
+                    <div class="category-card" data-category="Workshop">
+                        <div class="cat-icon cat-green">🛠️</div>
+                        <h3>Workshops</h3>
+                        <p>Hands-on interactive masterclasses</p>
+                        <span class="cat-count" id="count-Workshop">2 Openings</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Opportunities Section -->
+            <div class="section-container bg-light-mint">
+                <div class="section-header-between">
+                    <div>
+                        <h2>⭐ Featured Opportunities</h2>
+                        <p>Hand-picked top tier programs ending soon</p>
+                    </div>
+                    <button class="btn btn-outline" data-view="explore">View All Opportunities &rarr;</button>
+                </div>
+                <div class="opportunities-grid" id="featuredGrid">
+                    <!-- Dynamic Featured Cards -->
+                </div>
+            </div>
+
+            <!-- Call to Action Banner -->
+            <div class="section-container">
+                <div class="cta-banner">
+                    <div class="cta-content">
+                        <h2>Get Matches Tailored To Your Skills!</h2>
+                        <p>Setup your student profile with your branch, skills (Python, Java, AI), and interests to unlock personalized match percentages.</p>
+                    </div>
+                    <button class="btn btn-yellow btn-lg" data-view="profile">
+                        👤 Setup Student Profile
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2. EXPLORE OPPORTUNITIES VIEW -->
+        <section id="view-explore" class="view-section">
+            <div class="page-header">
+                <h1>Explore Opportunities</h1>
+                <p>Discover tech internships, global hackathons, scholarships, and certifications</p>
+            </div>
+
+            <!-- Search & Filters Container -->
+            <div class="filter-wrapper">
+                <!-- Main Search Bar -->
+                <div class="search-input-group">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="exploreSearchInput" placeholder="Search by opportunity name, skill, or organization (e.g. Google, Python, Hackathon)...">
+                    <button class="btn-clear-search" id="clearSearchBtn" title="Clear Search">&times;</button>
+                </div>
+
+                <!-- Filter Controls Grid -->
+                <div class="filters-grid">
+                    <!-- Category Filter -->
+                    <div class="filter-item">
+                        <label for="filterCategory">Category</label>
+                        <select id="filterCategory" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="Internship">💼 Internship</option>
+                            <option value="Hackathon">🏆 Hackathon</option>
+                            <option value="Competition">🎯 Competition</option>
+                            <option value="Scholarship">🎓 Scholarship</option>
+                            <option value="Course">📚 Course</option>
+                            <option value="Certification">🏅 Certification</option>
+                            <option value="Workshop">🛠️ Workshop</option>
+                        </select>
+                    </div>
+
+                    <!-- Mode Filter -->
+                    <div class="filter-item">
+                        <label for="filterMode">Mode</label>
+                        <select id="filterMode" class="filter-select">
+                            <option value="all">All Modes</option>
+                            <option value="Online">🌐 Online / Virtual</option>
+                            <option value="Offline">📍 Offline / In-Person</option>
+                            <option value="Hybrid">🔀 Hybrid</option>
+                        </select>
+                    </div>
+
+                    <!-- Skills Filter -->
+                    <div class="filter-item">
+                        <label for="filterSkill">Skill Required</label>
+                        <select id="filterSkill" class="filter-select">
+                            <option value="all">All Skills</option>
+                            <option value="Python">Python</option>
+                            <option value="Java">Java</option>
+                            <option value="AI/ML">AI / Machine Learning</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Cloud">Cloud / AWS</option>
+                            <option value="Cybersecurity">Cybersecurity</option>
+                        </select>
+                    </div>
+
+                    <!-- Deadline Filter -->
+                    <div class="filter-item">
+                        <label for="filterDeadline">Deadline</label>
+                        <select id="filterDeadline" class="filter-select">
+                            <option value="all">All Deadlines</option>
+                            <option value="ending_soon">🔥 Ending Soon (&le; 14 Days)</option>
+                            <option value="this_month">📅 This Month (&le; 30 Days)</option>
+                            <option value="no_deadline">♾️ No Deadline / Self-Paced</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort By -->
+                    <div class="filter-item">
+                        <label for="filterSort">Sort By</label>
+                        <select id="filterSort" class="filter-select">
+                            <option value="default">Featured / Default</option>
+                            <option value="deadline">Deadline (Soonest First)</option>
+                            <option value="match">Highest Match %</option>
+                            <option value="title">Alphabetical (A-Z)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Active Filter Tags & Reset -->
+                <div class="active-filters-row">
+                    <span class="results-count" id="resultsCount">Showing 23 opportunities</span>
+                    <button class="btn-reset-filters" id="resetFiltersBtn">Reset All Filters</button>
+                </div>
+            </div>
+
+            <!-- Opportunities Grid -->
+            <div class="opportunities-grid" id="exploreGrid">
+                <!-- Dynamic Opportunity Cards -->
+            </div>
+            <div class="empty-state" id="exploreEmptyState" style="display:none;">
+                <div class="empty-icon">🔍</div>
+                <h3>No opportunities found</h3>
+                <p>Try adjusting your search query or clear filters to see more results.</p>
+                <button class="btn btn-primary" id="emptyResetBtn">Reset Search Filters</button>
+            </div>
+        </section>
+
+
+        <!-- 3. RECOMMENDED OPPORTUNITIES VIEW -->
+        <section id="view-recommended" class="view-section">
+            <div class="page-header">
+                <div class="header-with-badge">
+                    <h1>⭐ Recommended For You</h1>
+                    <span class="badge-yellow">Rule-Based Match Engine</span>
+                </div>
+                <p>Personalized opportunities matching your profile skills, interests, and target education level.</p>
+            </div>
+
+            <!-- Profile Summary Bar -->
+            <div class="profile-banner-card" id="recProfileBanner">
+                <div class="profile-banner-info">
+                    <div class="avatar-circle" id="recAvatar">ST</div>
+                    <div>
+                        <h3 id="recProfileName">Student Name</h3>
+                        <p id="recProfileMeta">College • Education Level • Branch</p>
+                    </div>
+                </div>
+                <div class="profile-banner-tags" id="recProfileTags">
+                    <!-- Dynamic user skills chips -->
+                </div>
+                <button class="btn btn-outline btn-sm" data-view="profile">Edit Profile</button>
+            </div>
+
+            <!-- Prompt if profile empty -->
+            <div class="cta-card-warning" id="recEmptyProfileNotice" style="display:none;">
+                <div class="cta-warning-icon">💡</div>
+                <div>
+                    <h4>Complete your Student Profile to see accurate recommendations!</h4>
+                    <p>Enter your skills (Python, AI, Web Dev), interests, and target categories to generate custom match scores.</p>
+                </div>
+                <button class="btn btn-primary" data-view="profile">Setup Profile Now</button>
+            </div>
+
+            <!-- Recommended Grid -->
+            <div class="opportunities-grid" id="recommendedGrid">
+                <!-- Dynamic Recommended Opportunity Cards -->
+            </div>
+        </section>
+
+
+        <!-- 4. SAVED OPPORTUNITIES VIEW -->
+        <section id="view-saved" class="view-section">
+            <div class="page-header">
+                <h1>🔖 Saved Opportunities</h1>
+                <p>Your bookmarked opportunities and upcoming application deadlines</p>
+            </div>
+
+            <div class="opportunities-grid" id="savedGrid">
+                <!-- Dynamic Saved Cards -->
+            </div>
+
+            <div class="empty-state" id="savedEmptyState" style="display:none;">
+                <div class="empty-icon">🔖</div>
+                <h3>No saved opportunities yet</h3>
+                <p>Bookmark internships, hackathons, and scholarships while exploring to track them here!</p>
+                <button class="btn btn-primary" data-view="explore">Explore Opportunities Now</button>
+            </div>
+        </section>
+
+
+        <!-- 5. STUDENT DASHBOARD VIEW -->
+        <section id="view-dashboard" class="view-section">
+            <div class="dashboard-welcome-banner">
+                <div class="welcome-text">
+                    <h1 id="dashWelcomeHeading">Welcome back, Student 👋</h1>
+                    <p>Track your student opportunity summary, upcoming deadlines, and saved bookmarks.</p>
+                </div>
+                <div class="dash-quick-actions">
+                    <button class="btn btn-yellow" data-view="explore">Explore Opportunities</button>
+                    <button class="btn btn-outline-white" data-view="profile">Edit Profile</button>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon icon-green">📊</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="dashTotalFound">23</span>
+                        <span class="stat-label">Opportunities Found</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon icon-yellow">🔖</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="dashSavedCount">0</span>
+                        <span class="stat-label">Saved Bookmarks</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon icon-green">⭐</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="dashRecCount">0</span>
+                        <span class="stat-label">Top Recommended</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon icon-yellow">⏰</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="dashDeadlinesCount">0</span>
+                        <span class="stat-label">Deadlines Soon (&le;10 Days)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Columns (Deadlines + Recommended + Saved) -->
+            <div class="dashboard-layout-grid">
+                <!-- Left Column: Upcoming Deadlines -->
+                <div class="dashboard-column">
+                    <div class="column-card">
+                        <div class="column-header">
+                            <h3>⏰ Upcoming Deadlines</h3>
+                            <span class="badge-yellow-sm">Action Needed</span>
+                        </div>
+                        <div class="deadline-list" id="dashDeadlineList">
+                            <!-- Dynamic Deadline Items -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Top Recommendations Preview -->
+                <div class="dashboard-column">
+                    <div class="column-card">
+                        <div class="column-header">
+                            <h3>⭐ Recommended For You</h3>
+                            <a href="#recommended" class="link-green" data-view="recommended">View All &rarr;</a>
+                        </div>
+                        <div class="dash-rec-list" id="dashRecList">
+                            <!-- Dynamic Mini Recommended Cards -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 6. STUDENT PROFILE VIEW -->
+        <section id="view-profile" class="view-section">
+            <div class="page-header">
+                <h1>👤 Student Profile</h1>
+                <p>Personalize your student information to get tailored opportunity recommendations</p>
+            </div>
+
+            <div class="profile-form-container">
+                <form id="profileForm" onsubmit="return false;">
+                    <!-- Academic Info Card -->
+                    <div class="form-card">
+                        <h3>🎓 Basic & Academic Information</h3>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="profName">Full Name *</label>
+                                <input type="text" id="profName" class="form-input" placeholder="e.g. Aarav Sharma" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profCollege">College / University *</label>
+                                <input type="text" id="profCollege" class="form-input" placeholder="e.g. IIT Bombay / VIT / Delhi University" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profLevel">Education Level *</label>
+                                <select id="profLevel" class="form-select" required>
+                                    <option value="Undergraduate">Undergraduate (BS / BTech)</option>
+                                    <option value="Postgraduate">Postgraduate (MS / MTech)</option>
+                                    <option value="High School">High School</option>
+                                    <option value="PhD">PhD / Doctorate</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="profBranch">Branch / Department</label>
+                                <input type="text" id="profBranch" class="form-input" placeholder="e.g. Computer Science & Engineering">
+                            </div>
+                            <div class="form-group">
+                                <label for="profYear">Year of Study *</label>
+                                <select id="profYear" class="form-select" required>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="4th Year">4th Year</option>
+                                    <option value="Graduated">Graduated</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills Selector Card -->
+                    <div class="form-card">
+                        <h3>⚡ Technical & Professional Skills</h3>
+                        <p class="form-subtitle">Select skills you have or are currently learning</p>
+                        <div class="tags-selector-grid" id="skillsTagSelector">
+                            <!-- Clickable Skill Pills -->
+                            <button type="button" class="tag-chip" data-skill="Python">Python</button>
+                            <button type="button" class="tag-chip" data-skill="Java">Java</button>
+                            <button type="button" class="tag-chip" data-skill="C++">C++</button>
+                            <button type="button" class="tag-chip" data-skill="Web Development">Web Development</button>
+                            <button type="button" class="tag-chip" data-skill="JavaScript">JavaScript</button>
+                            <button type="button" class="tag-chip" data-skill="React">React</button>
+                            <button type="button" class="tag-chip" data-skill="AI/ML">AI / Machine Learning</option>
+                            <button type="button" class="tag-chip" data-skill="Data Science">Data Science</button>
+                            <button type="button" class="tag-chip" data-skill="Cloud">Cloud / AWS</option>
+                            <button type="button" class="tag-chip" data-skill="Cybersecurity">Cybersecurity</button>
+                            <button type="button" class="tag-chip" data-skill="DevOps">DevOps</button>
+                            <button type="button" class="tag-chip" data-skill="UI/UX">UI/UX Design</button>
+                            <button type="button" class="tag-chip" data-skill="Algorithms">Data Structures & Algorithms</button>
+                            <button type="button" class="tag-chip" data-skill="Leadership">Leadership</button>
+                        </div>
+                    </div>
+
+                    <!-- Interests Selector Card -->
+                    <div class="form-card">
+                        <h3>💡 Areas of Interest</h3>
+                        <p class="form-subtitle">Choose domains you want to build projects in</p>
+                        <div class="tags-selector-grid" id="interestsTagSelector">
+                            <button type="button" class="tag-chip" data-interest="Artificial Intelligence">Artificial Intelligence</button>
+                            <button type="button" class="tag-chip" data-interest="Software Development">Software Development</button>
+                            <button type="button" class="tag-chip" data-interest="Hackathons">Hackathons & Coding</button>
+                            <button type="button" class="tag-chip" data-interest="Open Source">Open Source</button>
+                            <button type="button" class="tag-chip" data-interest="Research & Science">Research & Science</button>
+                            <button type="button" class="tag-chip" data-interest="Web3 & Blockchain">Web3 & Blockchain</button>
+                            <button type="button" class="tag-chip" data-interest="Product Management">Product Management</button>
+                        </div>
+                    </div>
+
+                    <!-- Preferred Categories Card -->
+                    <div class="form-card">
+                        <h3>🎯 Preferred Opportunity Categories</h3>
+                        <div class="checkbox-options-grid">
+                            <label class="checkbox-label"><input type="checkbox" name="prefCategory" value="Internship" checked> 💼 Internships</label>
+                            <label class="checkbox-label"><input type="checkbox" name="prefCategory" value="Hackathon" checked> 🏆 Hackathons</label>
+                            <label class="checkbox-label"><input type="checkbox" name="prefCategory" value="Competition" checked> 🎯 Competitions</label>
+                            <label class="checkbox-label"><input type="checkbox" name="prefCategory" value="Scholarship" checked> 🎓 Scholarships</label>
+                            <label class="checkbox-label"><input type="checkbox" name="prefCategory" value="Course"> 📚 Courses</label>
+                            <label class="checkbox-label"><input type="checkbox" name="prefCategory" value="Certification"> 🏅 Certifications</label>
+                            <label class="checkbox-label"><input type="checkbox" name="prefCategory" value="Workshop"> 🛠️ Workshops</label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Action Bar -->
+                    <div class="form-actions-bar">
+                        <button type="submit" class="btn btn-primary btn-lg" id="saveProfileBtn">
+                            💾 Save Profile & Refresh Recommendations
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- OPPORTUNITY DETAILS MODAL -->
+    <div class="modal-backdrop" id="opportunityModal" style="display: none;">
+        <div class="modal-card">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modalContent">
+                <!-- Dynamic Details Content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-text">Opportunity<span class="logo-highlight">Hub</span></span>
+                <p>Empowering college students to discover life-changing career opportunities, hackathons, and scholarships.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home" data-view="home">Home</a>
+                <a href="#explore" data-view="explore">Explore</a>
+                <a href="#recommended" data-view="recommended">Recommended</a>
+                <a href="#saved" data-view="saved">Saved</a>
+                <a href="#profile" data-view="profile">Profile</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 OpportunityHub. Designed for College Students & Hackathons.</p>
+        </div>
+    </footer>
+
+    <!-- Application Script -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
